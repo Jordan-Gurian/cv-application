@@ -1,24 +1,18 @@
 import { useState } from 'react';
 
 export default function PersonalInfo() {
-    const [name, setName] = useState('John Doe');
-    const [email, setEmail] = useState('fake@gmail.com');
-    const [phone, setPhone] = useState('555-555-5555');
-
-    let tempName;
-    let tempEmail;
-    let tempPhone;
+    const [personal, setPersonal] = useState({ name: null, email: null, phone: null })
 
     function handleNameChange(e) {
-        tempName = e.target.value;
+        personal.name = e.target.value;
     }
 
     function handleEmailChange(e) {
-        tempEmail = e.target.value;
+        personal.email = e.target.value;
     }
 
     function handlePhoneChange(e) {
-        tempPhone = e.target.value;
+        personal.phone = e.target.value;
     }
 
     return(
@@ -26,9 +20,11 @@ export default function PersonalInfo() {
             <form 
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setName(tempName);
-                    setEmail(tempEmail);
-                    setPhone(tempPhone);
+                    setPersonal({ 
+                        name: personal.name,
+                        email: personal.email,
+                        phone: personal.phone,
+                    });
                 }}>
                 <label>Name
                 <input
@@ -59,13 +55,13 @@ export default function PersonalInfo() {
             </form>
                               
             <div>
-                {name}
+                {personal.name}
             </div>
             <div>
-                {email}
+                {personal.email}
             </div>
             <div>
-                {phone}
+                {personal.phone}
             </div>
                     
         </>
