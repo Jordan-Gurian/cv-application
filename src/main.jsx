@@ -4,12 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import PersonalInfo from './components/PersonalInfo.jsx';
 import EducationInfo from './components/EducationInfo.jsx';
+import WorkInfo from './components/WorkInfo.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PersonalInfo/>
     <EducationInfo/>
+    <WorkInfo/>
     <App />
   </React.StrictMode>,
 )
