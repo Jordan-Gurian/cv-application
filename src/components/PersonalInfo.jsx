@@ -17,7 +17,7 @@ export default function PersonalInfo() {
 
     return(
         <>
-            <form 
+            <form className='personal inputs'
                 onSubmit={(e) => {
                     e.preventDefault();
                     setPersonal({ 
@@ -26,44 +26,45 @@ export default function PersonalInfo() {
                         phone: personal.phone,
                     });
                 }}>
-                <label>Name
+                <label>Name</label>
                 <input
                     type='text'
                     onChange={e => {
                         handleNameChange(e)
                     }}
-                /></label>
-                <label>Email  
+                />
+                <label>Email</label>
                 <input
                     type='email'
                     onChange={e => {
                         handleEmailChange(e)
                     }}
-                /></label> 
-                <label>Phone 
+                /> 
+                <label>Phone</label>
                 <input
                     type='tel'
                     onChange={e => {
                         handlePhoneChange(e)
                     }}
-                /></label>
+                />
                 <button 
                     type='submit'
                 >
                     Submit
                 </button>    
             </form>
-                              
-            <div>
-                {personal.name}
+            
+            <div className='item'>                  
+                <div>
+                    {personal.name}
+                </div>
+                <div>
+                    {personal.email}
+                </div>
+                <div>
+                    {personal.phone}
+                </div>
             </div>
-            <div>
-                {personal.email}
-            </div>
-            <div>
-                {personal.phone}
-            </div>
-                    
         </>
     )
 

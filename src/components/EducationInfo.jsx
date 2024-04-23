@@ -1,15 +1,9 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import '../styles/style.css'
 
-export default function EducationInfo() {
-    const [items, setItems] = useState([]);
-    const [education, setEducation] = useState({ college: null, degree: null, gradDate: null })
-
-
-    function handleItemsChange(e) {
-        setItems([...items, { ...education, id: uuidv4() }])
-    }
-
+export default function EducationInfo({ addEducation }) {
+    const [education, setEducation] = useState({ college: null, degree: null, gradDate: null });
+    
     function handleCollegeChange(e) {
         education.college = e.target.value;
     }
@@ -22,73 +16,45 @@ export default function EducationInfo() {
         education.gradDate = e.target.value;
     }
 
-    function deleteEntry(id, e) {
-        e.preventDefault();
-        setItems(items.filter((item) => item.id != id));  
-    }
-
-
     return(
         <>
-            <form 
+            <form className='education inputs'
                 onSubmit={(e) => {
                     e.preventDefault();
+                    addEducation(education)
                     setEducation({ 
                         college: education.college,
                         degree: education.degree,
                         gradDate: education.gradDate,
                     });
-                    handleItemsChange(e);
                 }}>
-                <label>College
+                <label>College</label>
                 <input
                     type='text'
                     onChange={e => {
                         handleCollegeChange(e)
                     }}
-                /></label>
-                <label>Degree  
+                />
+                <label>Degree</label>
                 <input
                     type='text'
                     onChange={e => {
                         handleDegreeChange(e)
                     }}
-                /></label> 
-                <label>Graduation Date 
+                />
+                <label>Graduation Date</label>
                 <input
                     type='date'
                     onChange={e => {
                         handleGradDateChange(e)
                     }}
-                /></label>
+                />
                 <button 
                     type='submit'
                 >
                     Submit
                 </button>    
             </form>
-
-            {items.map(item => {
-                return (
-                <div key={item.id}>
-                    <div>
-                        {item.college}
-                    </div>
-                    <div>
-                        {item.degree}
-                    </div>
-                    <div>
-                        {item.gradDate}
-                    </div>
-                    <button
-                        onClick={e => {
-                            deleteEntry(item.id, e);
-                            }}>
-                    Delete
-                    </button>
-                </div>
-            )})}        
         </>
     )
-
 }

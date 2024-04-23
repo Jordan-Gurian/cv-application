@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import '../styles/style.css'
 
 export default function WorkInfo() {
     const [items, setItems] = useState([]);
@@ -36,7 +37,7 @@ export default function WorkInfo() {
 
     return(
         <>
-            <form 
+            <form className='work inputs'
                 onSubmit={(e) => {
                     e.preventDefault();
                     setWork({ 
@@ -48,41 +49,41 @@ export default function WorkInfo() {
                     });
                     handleItemsChange(e);
                 }}>
-                <label>Company
+                <label>Company</label>
                 <input
                     type='text'
                     onChange={e => {
                         handleCompanyChange(e)
                     }}
-                /></label>
-                <label>Position  
+                />
+                <label>Position</label>
                 <input
                     type='text'
                     onChange={e => {
                         handlePositionChange(e)
                     }}
-                /></label> 
-                <label>Tasks
+                />
+                <label>Tasks</label>
                 <input
                     type='text'
                     onChange={e => {
                         handleTasksChange(e)
                     }}
-                /></label>
-                <label>Start Date
+                />
+                <label>Start Date</label>
                 <input
                     type='date'
                     onChange={e => {
                         handleStartDateChange(e)
                     }}
-                /></label>
-                <label>End Date
+                />
+                <label>End Date</label>
                 <input
                     type='date'
                     onChange={e => {
                         handleEndDateChange(e)
                     }}
-                /></label>
+                />
                 <button 
                     type='submit'
                 >
@@ -92,7 +93,7 @@ export default function WorkInfo() {
 
             {items.map(item => {
                 return (
-                <div key={item.id}>
+                <div key={item.id} class='item'>
                     <div>
                         {item.company}
                     </div>
