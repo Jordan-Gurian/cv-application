@@ -1,7 +1,17 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function EducationInfo() {
+    const [items, setItems] = useState([]);
     const [education, setEducation] = useState({ college: null, degree: null, gradDate: null })
+
+
+
+    function handleItemsChange(e) {
+        setItems([...items, { ...education, id: uuidv4() }])
+    }
+
+
 
     function handleCollegeChange(e) {
         education.college = e.target.value;
@@ -25,6 +35,7 @@ export default function EducationInfo() {
                         degree: education.degree,
                         gradDate: education.gradDate,
                     });
+                    handleItemsChange(e);
                 }}>
                 <label>College
                 <input
@@ -53,16 +64,22 @@ export default function EducationInfo() {
                     Submit
                 </button>    
             </form>
-                              
-            <div>
-                {education.college}
-            </div>
-            <div>
-                {education.degree}
-            </div>
-            <div>
-                {education.gradDate}
-            </div>
+
+            {items.map(item => {
+                return (
+                <>
+                <div>
+                    {item.college}
+                </div>
+                <div>
+                    {item.degree}
+                </div>
+                <div>
+                    {item.gradDate}
+                </div>
+                </>
+            )})}                 
+
                     
         </>
     )
