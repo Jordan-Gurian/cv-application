@@ -1,7 +1,13 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function WorkInfo() {
+    const [items, setItems] = useState([]);
     const [work, setWork] = useState({ company: null, position: null, tasks: null, startDate: null, endDate: null })
+
+    function handleItemsChange(e) {
+        setItems([...items, { ...work, id: uuidv4() }])
+    }
 
     function handleCompanyChange(e) {
         work.company = e.target.value;
@@ -23,6 +29,11 @@ export default function WorkInfo() {
         work.endDate = e.target.value;
     }
 
+    function deleteEntry(id, e) {
+        e.preventDefault();
+        setItems(items.filter((item) => item.id != id));  
+    }
+
     return(
         <>
             <form 
@@ -35,6 +46,7 @@ export default function WorkInfo() {
                         startDate: work.startDate,
                         endDate: work.endDate,
                     });
+                    handleItemsChange(e);
                 }}>
                 <label>Company
                 <input
@@ -77,23 +89,33 @@ export default function WorkInfo() {
                     Submit
                 </button>    
             </form>
-                              
-            <div>
-                {work.company}
-            </div>
-            <div>
-                {work.position}
-            </div>
-            <div>
-                {work.tasks}
-            </div>
-            <div>
-                {work.startDate}
-            </div>
-            <div>
-                {work.endDate}
-            </div>
-                    
+
+            {items.map(item => {
+                return (
+                <div key={item.id}>
+                    <div>
+                        {item.company}
+                    </div>
+                    <div>
+                        {item.position}
+                    </div>
+                    <div>
+                        {item.tasks}
+                    </div>
+                    <div>
+                        {item.startDate}
+                    </div>
+                    <div>
+                        {item.endDate}
+                    </div>
+                    <button
+                        onClick={e => {
+                            deleteEntry(item.id, e);
+                            }}>
+                    Delete
+                    </button>
+                </div>
+            )})}
         </>
     )
 

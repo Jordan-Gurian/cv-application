@@ -6,7 +6,6 @@ export default function EducationInfo() {
     const [education, setEducation] = useState({ college: null, degree: null, gradDate: null })
 
 
-
     function handleItemsChange(e) {
         setItems([...items, { ...education, id: uuidv4() }])
     }
@@ -25,8 +24,7 @@ export default function EducationInfo() {
 
     function deleteEntry(id, e) {
         e.preventDefault();
-        setItems(items.filter((item) => item.id != id));
-        
+        setItems(items.filter((item) => item.id != id));  
     }
 
 
@@ -89,9 +87,7 @@ export default function EducationInfo() {
                     Delete
                     </button>
                 </div>
-            )})}                 
-
-                    
+            )})}        
         </>
     )
 
