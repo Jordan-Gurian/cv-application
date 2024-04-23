@@ -11,8 +11,6 @@ export default function EducationInfo() {
         setItems([...items, { ...education, id: uuidv4() }])
     }
 
-
-
     function handleCollegeChange(e) {
         education.college = e.target.value;
     }
@@ -24,6 +22,13 @@ export default function EducationInfo() {
     function handleGradDateChange(e) {
         education.gradDate = e.target.value;
     }
+
+    function deleteEntry(id, e) {
+        e.preventDefault();
+        setItems(items.filter((item) => item.id != id));
+        
+    }
+
 
     return(
         <>
@@ -67,17 +72,23 @@ export default function EducationInfo() {
 
             {items.map(item => {
                 return (
-                <>
-                <div>
-                    {item.college}
+                <div key={item.id}>
+                    <div>
+                        {item.college}
+                    </div>
+                    <div>
+                        {item.degree}
+                    </div>
+                    <div>
+                        {item.gradDate}
+                    </div>
+                    <button
+                        onClick={e => {
+                            deleteEntry(item.id, e);
+                            }}>
+                    Delete
+                    </button>
                 </div>
-                <div>
-                    {item.degree}
-                </div>
-                <div>
-                    {item.gradDate}
-                </div>
-                </>
             )})}                 
 
                     
