@@ -33,7 +33,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='container'>
       <div className='left-side'>
         <h2>Personal Information</h2>
         <PersonalInfo addPersonal={addPersonal}/>
@@ -44,15 +44,18 @@ function App() {
       </div>
 
       <div className='right-side'>
-        <h2>Personal Information</h2>
-        <PersonalCard personal={personal}/>
-        <div className='education-items'>
+        <div className='items'>
+          <h2>Personal Information</h2>
+          <PersonalCard personal={personal}/>
+        </div>
+        <div className='items'>
           <h2>Education</h2>
             {educationItems.map(item => {
               return(
               <div className='item'>
                 <EducationCard education={item}/>
                 <button
+                className='delete'
                 onClick={e => {
                     deleteEntry(educationItems, setEducationItems, item.id, e);
                     }}>
@@ -61,13 +64,14 @@ function App() {
               </div>
             )})}
         </div>
-        <div className='work-items'>
+        <div className='items'>
           <h2>Work Experience</h2>
             {workItems.map(item => {
               return(
               <div className='item'>
                 <WorkCard work={item}/>
                 <button
+                className='delete'
                 onClick={e => {
                     deleteEntry(workItems, setWorkItems, item.id, e);
                     }}>
@@ -77,7 +81,7 @@ function App() {
             )})}
         </div>
       </div>  
-    </>
+    </div>
   )
 }
 

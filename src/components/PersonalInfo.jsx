@@ -48,7 +48,8 @@ export default function PersonalInfo({ addPersonal }) {
                         handlePhoneChange(e)
                     }}
                 />
-                <button 
+                <button
+                    className='submit' 
                     type='submit'
                 >
                     Submit

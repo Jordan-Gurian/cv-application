@@ -49,7 +49,8 @@ export default function EducationInfo({ addEducation }) {
                         handleGradDateChange(e)
                     }}
                 />
-                <button 
+                <button
+                    className='submit'  
                     type='submit'
                 >
                     Submit

@@ -74,6 +74,7 @@ export default function WorkInfo({ addWork }) {
                     }}
                 />
                 <button 
+                    className='submit' 
                     type='submit'
                 >
                     Submit

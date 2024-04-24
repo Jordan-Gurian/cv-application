@@ -1,16 +1,28 @@
-.whole {
+.container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
+    grid-template-columns: 1fr 3fr;
 }
 
-button {
-    background-color: cyan;
+.submit,
+.delete {
+    background-color: lightgray;
     border: 1px solid black;
 }
 
+.right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submit:hover {
+    background-color: green;
+    opacity: .7;
+}
+
 button:hover {
+    background-color: red;
     opacity: .7;
 }
 
@@ -22,23 +34,10 @@ button:hover {
     padding: 10px;
 }
 
-.personal {
-    grid-column: 0 / 1;
-    grid-row: 1 / 2;
-}
-
-.education {
-    grid-column: 0 / 1;
-    grid-row: 2 / 3;
-}
-
-.work {
-    grid-column: 0 / 1;
-    grid-row: 3 / 4;
-}
-
-.item {
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     border: 1px solid black;
-    grid-column: 2 / -1;
     padding: 10px;
 }
