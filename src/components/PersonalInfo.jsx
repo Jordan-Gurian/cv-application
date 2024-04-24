@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ addPersonal }) {
     const [personal, setPersonal] = useState({ name: null, email: null, phone: null })
 
     function handleNameChange(e) {
@@ -20,7 +20,8 @@ export default function PersonalInfo() {
             <form className='personal inputs'
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setPersonal({ 
+                    addPersonal(personal);
+                    setPersonal({
                         name: personal.name,
                         email: personal.email,
                         phone: personal.phone,
@@ -53,18 +54,6 @@ export default function PersonalInfo() {
                     Submit
                 </button>    
             </form>
-            
-            <div className='item'>                  
-                <div>
-                    {personal.name}
-                </div>
-                <div>
-                    {personal.email}
-                </div>
-                <div>
-                    {personal.phone}
-                </div>
-            </div>
         </>
     )
 
