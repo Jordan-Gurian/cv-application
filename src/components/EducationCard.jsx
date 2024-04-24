@@ -1,4 +1,4 @@
-export default function EducationCard({ education, deleteEntry }) {
+export default function EducationCard({ education }) {
     return (
         <div className={'item'}>
             <div>
@@ -10,12 +10,6 @@ export default function EducationCard({ education, deleteEntry }) {
             <div>
                 {education.gradDate}
             </div>
-            <button
-                onClick={e => {
-                    deleteEntry(education.id, e);
-                    }}>
-            Delete
-            </button>
         </div>
         )
 }
