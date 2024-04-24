@@ -53,7 +53,7 @@ export default function WorkInfo({ addWork }) {
                     }}
                 />
                 <label>Tasks</label>
-                <input
+                <textarea
                     type='text'
                     onChange={e => {
                         handleTasksChange(e)
